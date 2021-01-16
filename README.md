@@ -96,5 +96,13 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 </project>
 ```
 
+## Create Database
 
+Setup the MySQL server and create a database to store the users information.
+
+<p align="center">
+	<img width="700px" src="screenshot/mysql.png" align="center"/>
+</p>
+
+<br>
 
