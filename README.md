@@ -103,7 +103,7 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 </details>
 
 <details>
-	<SUMMARY><h3><b>Create Database</b></h3></SUMMARY>
+	<SUMMARY><b>Create Database</b></SUMMARY>
 
 Setup the MySQL server and create a database to store the users information.
 
