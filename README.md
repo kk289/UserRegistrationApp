@@ -106,3 +106,19 @@ Setup the MySQL server and create a database to store the users information.
 
 <br>
 
+<p align="center">
+	<img width="700px" src="screenshot/userappdb.png" align="center"/>
+</p>
+
+Now we need to setup the Spring Boot configuration file "application.properties" under src/main/resources directory. We enter following properties for configuring a data source that will be used by Spring Data JPA. We start with mysql database link including username and password for that source. here, spring.jpa.hibernate.ddl-auto help to create the tables in the database with the help of hibernate.format_sql when we run a unit test later. NOTE: Once we run the unit test, we need to change spring.jpa.hibernate.ddl-auto property to none since we dont need more table in the database.
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/userappdb
+spring.datasource.username=root
+spring.datasource.password=password
+
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+
