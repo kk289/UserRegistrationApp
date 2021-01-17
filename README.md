@@ -514,5 +514,26 @@ Meanwhile we need to update AppController file with following listUsers() method
 	}
 ```
 
+Since all stored users password are visible on sql database, we need to encrypt them. Lets create a java class PasswordEncoder under src/main/java directory.
+
+<details>
+	<SUMMARY><b>src/test/java/com.example.userapp/PasswordEncoder.java</b></SUMMARY>
+
+```
+package com.example.userapp;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+public class PasswordEncoder {
+
+	public static void main(String[] args) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String rawPassword = "testpassword";
+		String encodedPassword = encoder.encode(rawPassword);
+		System.out.println(encodedPassword);
+	}
+}
+```
+</details>
 
 
