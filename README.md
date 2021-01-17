@@ -16,7 +16,11 @@ Lets start with a new Spring Starter Project using Maven Type and Java Language.
 
 6. Thymeleaf - Java based library to create a web application.
 
+
 Since we chose the following dependencies, the [pom.xml](https://github.com/kk289/UserRegistrationApp/blob/main/pom.xml) file is as follow: 
+
+<details>
+	<SUMMARY><b>pom.xml</b></SUMMARY>
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -95,6 +99,8 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 
 </project>
 ```
+
+</details>
 
 ### Create Database
 
