@@ -408,10 +408,25 @@ public interface UserRepository extends JpaRepository<User, Long> {
 }
 ```
 
+Suppose that the email column is unique in the users table, so we define the findByEmail() method that returns a single User object based on email (no two users having the same email).
 
+#### src/test/java/com.example.userapp/UserRepositoryTests.java
 
+```
+@Test
+	public void testFindByEmail() {
+		String email = "kevilkhadka@gmail.com";
+		User user = repo.findByEmail(email);
+		
+		assertThat(user.getEmail()).isEqualTo(email);
+	}	
+```
 
+Lets run the Junit test and we see the JUnit test run successfully.
 
+<p align="center">
+	<img width="700px" src="screenshot/unittest2.png" align="center"/>
+</p>
 
 
 
