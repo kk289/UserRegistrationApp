@@ -300,6 +300,6 @@ Now lets run the Spring boot project program, by default, we get following resul
 </p>
 
 
-We can use the Bootstrap and JQuery from Webjars to modify the web by adding their dependencies in pom.xml file. Here, Thymeleaf help to generate the URLs properly. We can access the web application at this URL: http://localhost:8080
+We can use the Bootstrap and JQuery from Webjars to modify the web by adding their dependencies in [pom.xml](https://github.com/kk289/UserRegistrationApp/blob/main/pom.xml) file. Here, Thymeleaf help to generate the URLs properly. We can access the web application at this URL: http://localhost:8080
 
 
