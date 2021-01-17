@@ -302,4 +302,118 @@ Now lets run the Spring boot project program, by default, we get following resul
 
 We can use the Bootstrap and JQuery from Webjars to modify the web by adding their dependencies in [pom.xml](https://github.com/kk289/UserRegistrationApp/blob/main/pom.xml) file. Here, Thymeleaf help to generate the URLs properly. We can access the web application at this URL: http://localhost:8080
 
+<details>
+	<SUMMARY><b>src/main/java/com.example.userapp/CustomUserDetails.java</b></SUMMARY>
+
+```
+package com.example.userapp;
+
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
+public class CustomUserDetails implements UserDetails {
+	
+
+private User user;
+	
+	public CustomUserDetails(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
+
+	@Override
+	public String getPassword() {
+		return user.getPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return user.getEmail();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
+	public String getFullName() {
+		return user.getFirstName() + " " + user.getLastName();
+	}
+}
+```
+</details>
+
+<details>
+	<SUMMARY><b>src/main/java/com.example.userapp/CustomUserDetailsService.java</b></SUMMARY>
+
+```
+package com.example.userapp;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class CustomUserDetailsService implements UserDetailsService {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepo.findByEmail(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found");
+		}
+		return new CustomUserDetails(user);
+	}
+}
+```
+</details>
+
+We need to implement the login feature. CustomUserDetails java class of subtype UserDetails (defined by Spring Security) helps to represent an authentication user while login. 
+
+Spring Security will invoke methods in this class during the authentication process. And next Spring Security look up the user information, we implements the UserDetailsService interface. 
+As you can see, Spring Security will invoke the loadUserByUsername() method to authenticate the user, and if successful, a new object of type CustomUserDetails object is created to represent the authenticated user. 
+
+Also remember to update the UserRepository interface for adding this method:
+
+```
+public interface UserRepository extends JpaRepository<User, Long> {
+
+	@Query("SELECT u FROM User u WHERE u.email = ?1")
+	public User findByEmail(String email);
+}
+```
+
+
+
+
+
+
+
+
+
 
