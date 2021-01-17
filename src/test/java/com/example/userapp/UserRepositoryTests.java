@@ -35,4 +35,16 @@ public class UserRepositoryTests {
 		
 		assertThat(user.getEmail()).isEqualTo(existUser.getEmail());	
 	}
+	
+	@Test
+	public void testFindByEmail() {
+		String email = "kevilkhadka@gmail.com";
+		User user = repo.findByEmail(email);
+		
+		assertThat(user.getEmail()).isEqualTo(email);
+	}	
 }
+
+
+
+
