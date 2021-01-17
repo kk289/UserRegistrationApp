@@ -102,7 +102,8 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 
 </details>
 
-### Create Database
+<details>
+	<SUMMARY><h3><b>Create Database</b></h3></SUMMARY>
 
 Setup the MySQL server and create a database to store the users information.
 
@@ -113,6 +114,8 @@ Setup the MySQL server and create a database to store the users information.
 <p align="center">
 	<img width="700px" src="screenshot/userappdb.png" align="center"/>
 </p>
+
+</details>
 
 Now we need to setup the Spring Boot configuration file "application.properties" under src/main/resources directory. We enter following properties for configuring a data source that will be used by Spring Data JPA. We start with mysql database link including username and password for that source. here, spring.jpa.hibernate.ddl-auto help to create the tables in the database with the help of hibernate.format_sql when we run a unit test later. 
 
