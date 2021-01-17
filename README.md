@@ -96,7 +96,7 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 </project>
 ```
 
-## Create Database
+### Create Database
 
 Setup the MySQL server and create a database to store the users information.
 
@@ -108,9 +108,11 @@ Setup the MySQL server and create a database to store the users information.
 	<img width="700px" src="screenshot/userappdb.png" align="center"/>
 </p>
 
-Now we need to setup the Spring Boot configuration file "application.properties" under src/main/resources directory. We enter following properties for configuring a data source that will be used by Spring Data JPA. We start with mysql database link including username and password for that source. here, spring.jpa.hibernate.ddl-auto help to create the tables in the database with the help of hibernate.format_sql when we run a unit test later. NOTE: Once we run the unit test, we need to change spring.jpa.hibernate.ddl-auto property to none since we dont need more table in the database.
+Now we need to setup the Spring Boot configuration file "application.properties" under src/main/resources directory. We enter following properties for configuring a data source that will be used by Spring Data JPA. We start with mysql database link including username and password for that source. here, spring.jpa.hibernate.ddl-auto help to create the tables in the database with the help of hibernate.format_sql when we run a unit test later. 
 
-### src/main/resources/application.properties
+NOTE: Once we run the unit test later, we need to change spring.jpa.hibernate.ddl-auto property to none since we dont need more table in the database.
+
+#### src/main/resources/application.properties
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/userappdb
 spring.datasource.username=root
@@ -118,6 +120,76 @@ spring.datasource.password=password
 
 spring.jpa.hibernate.ddl-auto=create
 spring.jpa.properties.hibernate.format_sql=true
+```
+
+
+#### src/main/java/com.example.userapp/User.java
+
+we need the user information consists of firstname, lastname, user ID, email and password. Lets create a new java class named User to map with the corresponding users table in the database.
+
+```
+package com.example.userapp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "users")
+public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@Column(nullable = false, unique = true, length = 64)
+	private String email;
+	
+	@Column(nullable = false, length = 64)
+	private String password;
+	
+	@Column(name = "first_name", nullable = false, length = 64)
+	private String firstName;
+	
+	@Column(name = "last_name", nullable = false, length = 64)
+	private String lastName;
+
+	
+	public Long getId() { return id; }
+	public void setId(Long id) { this.id = id; }
+	
+	public String getEmail() { return email; }
+	public void setEmail(String email) { this.email = email; }
+
+	public String getPassword() { return password; }
+	public void setPassword(String password) { this.password = password; }
+
+	public String getFirstName() { return firstName; }
+	public void setFirstName(String firstName) { this.firstName = firstName; }
+
+	public String getLastName() { return lastName; }
+	public void setLastName(String lastName) { this.lastName = lastName; }
+}
+```
+
+#### src/main/java/com.example.userapp/UserRepository.java
+
+We meed to create a new interface named UserRepository to act as a Spring Data JPA repository. This interface is a subtype of JpaRepository which defines common persistance operations and the implementations will be generated at runtime by Spring Data JPA.
+
+```
+package com.example.userapp;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+	@Query("SELECT u FROM User u WHERE u.email = ?1")
+	public User findByEmail(String email);
+}
 ```
 
 
