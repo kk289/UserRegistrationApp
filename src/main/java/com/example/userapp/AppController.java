@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AppController {
 	
+	@Autowired
+	private UserRepository userRepo;
+	
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
@@ -25,7 +28,11 @@ public class AppController {
 	
 	@PostMapping("/process_register")
 	public String processRegister(User user) {
-		repo.save(user);
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		
+		userRepo.save(user);
 		
 		return "registered_users";
 	}
