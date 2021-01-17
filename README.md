@@ -201,7 +201,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 }
 ```
 
-### Run Unit Test
+### Run JUnit Test
 
 #### src/test/java/com.example.userapp/UserRepositoryTests.java
 
@@ -261,7 +261,7 @@ And we can see the user data information stored in SQL database permanently.
 </p>
 
 
-### Run Next Unit Test
+### Run Next JUnit Test
 
 Let test the program by adding another user information. But we need to do some changes in application.properties file. Since we already created a table, we don't need to create another so we replace "create" with "none".
 ```
@@ -271,4 +271,27 @@ spring.jpa.hibernate.ddl-auto=none
 <p align="center">
 	<img width="700px" src="screenshot/sqlresult2.png" align="center"/>
 </p>
+
+
+Next, let’s create a Spring MVC controller class named AppController, with the first handler method to show the home page.
+
+#### src/main/java/com.example.userapp/AppController.java
+
+```
+package com.example.userapp;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AppController {
+	
+	@GetMapping("")
+	public String viewHomePage() {
+		return "index";
+	}
+}
+```
+
+And 
 
