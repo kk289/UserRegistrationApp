@@ -177,7 +177,7 @@ public class User {
 
 #### src/main/java/com.example.userapp/UserRepository.java
 
-We meed to create a new interface named UserRepository to act as a Spring Data JPA repository. This interface is a subtype of JpaRepository which defines common persistance operations and the implementations will be generated at runtime by Spring Data JPA.
+We need to create a new interface named UserRepository to act as a Spring Data JPA repository. This interface is a subtype of JpaRepository which defines common persistance operations and the implementations will be generated at runtime by Spring Data JPA.
 
 ```
 package com.example.userapp;
