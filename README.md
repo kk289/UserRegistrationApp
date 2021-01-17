@@ -239,4 +239,26 @@ public class UserRepositoryTests {
 }
 ```
 
+We run testCreateUser() as JUnit test and get following result. Here the JUnit test run successfully and create a SQL statement in the console output. 
+
+<p align="center">
+	<img width="700px" src="screenshot/sqlstatement.png" align="center"/>
+</p>
+
+And we can see the user data information stored in SQL database permanently.
+
+<p align="center">
+	<img width="700px" src="screenshot/sqlresult.png" align="center"/>
+</p>
+
+
+### Run Next Unit Test
+
+Let test the program by adding another user information. But we need to do some changes in application.properties file. 
+
+```
+spring.jpa.hibernate.ddl-auto=none
+```
+
+Since we already created a table, we don't need to create another so we replace "create" with "none".
 
