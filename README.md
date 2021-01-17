@@ -537,3 +537,17 @@ public class PasswordEncoder {
 </details>
 
 
+Lets run the PasswordEncoder.java file as the Java Application and we get following result in the console. 
+
+```
+$2a$10$jCanzzQ6uCrBe94puQJOQ.6nqJbcgGWygn41F.6ymOmE7zx51c/e6
+```
+
+Now copy the code from the console and paste it to the sql database table under password correspond to email user we used.It looks like following screenshot. After that click on apply, and apply. Once its done, all new users' passwords are encrypted and stored in the sql database.
+
+<p align="center">
+	<img width="600px" src="screenshot/mysqlpassword.png" align="center"/>
+</p>
+
+
+
