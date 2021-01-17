@@ -273,7 +273,7 @@ spring.jpa.hibernate.ddl-auto=none
 </p>
 
 
-Next, let’s create a Spring MVC controller class named AppController, with the first handler method to show the home page.
+Next, let’s create a Spring MVC controller class named AppController, with the first handler method to show the home page. And under /src/main/resources/templates directory, create a new HTML file named index.html.
 
 #### src/main/java/com.example.userapp/AppController.java
 
@@ -293,5 +293,13 @@ public class AppController {
 }
 ```
 
-And 
+Now lets run the Spring boot project program, by default, we get following result:
+
+<p align="center">
+	<img width="700px" src="screenshot/webpage1.png" align="center"/>
+</p>
+
+
+We can use the Bootstrap and JQuery from Webjars to modify the web by adding their dependencies in pom.xml file. Here, Thymeleaf help to generate the URLs properly. We can access the web application at this URL: http://localhost:8080
+
 
