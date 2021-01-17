@@ -254,11 +254,12 @@ And we can see the user data information stored in SQL database permanently.
 
 ### Run Next Unit Test
 
-Let test the program by adding another user information. But we need to do some changes in application.properties file. 
-
+Let test the program by adding another user information. But we need to do some changes in application.properties file. Since we already created a table, we don't need to create another so we replace "create" with "none".
 ```
 spring.jpa.hibernate.ddl-auto=none
 ```
 
-Since we already created a table, we don't need to create another so we replace "create" with "none".
+<p align="center">
+	<img width="700px" src="screenshot/sqlresult2.png" align="center"/>
+</p>
 
