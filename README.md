@@ -425,8 +425,11 @@ Suppose that the email column is unique in the users table, so we define the fin
 Lets run the Junit test and we see the JUnit test run successfully.
 
 <p align="center">
-	<img width="700px" src="screenshot/unittest2.png" align="center"/>
+	<img width="500px" src="screenshot/unittest2.png" align="center"/>
 </p>
+
+#### src/main/java/com.example.userapp/WebSecurityConfig.java
+
 
 
 
