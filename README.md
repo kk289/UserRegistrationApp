@@ -192,4 +192,51 @@ public interface UserRepository extends JpaRepository<User, Long> {
 }
 ```
 
+### Run Unit Test
+
+#### src/test/java/com.example.userapp/UserRepositoryTests.java
+
+Now it is time to do some basic code testing. We create a new java class under src/test/java directory for testing Spring Data JPA repositories.It is configured to work with the actual database ("userappdb") and commit the changes.
+
+```
+package com.example.userapp;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.annotation.Rollback;
+
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = Replace.NONE)
+@Rollback(false)
+public class UserRepositoryTests {
+
+	@Autowired
+	private TestEntityManager entityManager;
+	
+	@Autowired
+	private UserRepository repo;
+	
+	@Test
+	public void testCreateUser() {
+		User user = new User();
+		user.setEmail("kevilkhadka@gmail.com");
+		user.setPassword("testpassword");
+		user.setFirstName("kevil");
+		user.setLastName("Khadka");
+		
+		User savedUser = repo.save(user);
+		
+		User existUser = entityManager.find(User.class, savedUser.getId());
+		
+		assertThat(user.getEmail()).isEqualTo(existUser.getEmail());		
+	}
+}
+```
+
 
