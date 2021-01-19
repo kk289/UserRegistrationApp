@@ -38,7 +38,7 @@ public class UserRepositoryTests {
 	
 	@Test
 	public void testFindByEmail() {
-		String email = "kevilkhadka@gmail.com";
+		String email = "kevilkhadka2@gmail.com";
 		User user = repo.findByEmail(email);
 		
 		assertThat(user.getEmail()).isEqualTo(email);
