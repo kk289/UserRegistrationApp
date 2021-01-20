@@ -8,10 +8,10 @@
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">User Registration Application</a>
+  </nav>
 	<div class="container text-center">
-		<div>
-			<h1>User Registration Application</h1>
-		</div>
 		<form th:action="@{/process_register}" th:object="${user}" 
 			method="post" style="max-width: 600px; margin: 0 auto;">
 		<div class="m-3">
