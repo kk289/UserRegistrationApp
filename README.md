@@ -550,3 +550,31 @@ Now copy the code from the console and paste it to the sql database table under 
 <p align="center">
 	<img width="600px" src="screenshot/mysqlpassword.png" align="center"/>
 </p>
+
+
+Lets run the spring boot program, and open the url, http://localhost:8080, in any browser and we should get following results:
+
+#### Homepage
+<p align="center">
+	<img width="600px" src="screenshot/homepage.png" align="center"/>
+</p>
+
+#### Register Page
+<p align="center">
+	<img width="600px" src="screenshot/registerpage.png" align="center"/>
+</p>
+
+#### Login Page
+<p align="center">
+	<img width="600px" src="screenshot/loginpage.png" align="center"/>
+</p>
+
+#### List of Users Stored
+<p align="center">
+	<img width="600px" src="screenshot/listofusers.png" align="center"/>
+</p>
+
+#### SQL Database
+<p align="center">
+	<img width="600px" src="screenshot/userdatabase.png" align="center"/>
+</p>
