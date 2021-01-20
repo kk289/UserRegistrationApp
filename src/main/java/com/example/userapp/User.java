@@ -26,7 +26,6 @@ public class User {
 	
 	@Column(name = "last_name", nullable = false, length = 64)
 	private String lastName;
-
 	
 	public Long getId() { return id; }
 	public void setId(Long id) { this.id = id; }
