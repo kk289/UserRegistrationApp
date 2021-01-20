@@ -527,9 +527,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class PasswordEncoder {
 
 	public static void main(String[] args) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String rawPassword = "testpassword";
-		String encodedPassword = encoder.encode(rawPassword);
+		String encodedPassword = passwordEncoder.encode(rawPassword);
+
 		System.out.println(encodedPassword);
 	}
 }
@@ -540,7 +542,7 @@ public class PasswordEncoder {
 Lets run the PasswordEncoder.java file as the Java Application and we get following result in the console. 
 
 ```
-$2a$10$jCanzzQ6uCrBe94puQJOQ.6nqJbcgGWygn41F.6ymOmE7zx51c/e6
+$2a$10$Asv1jChL8/xw8b.k/bfTOOzsleGa7JDJefmw4K566M102XXS/Oq4e
 ```
 
 Now copy the code from the console and paste it to the sql database table under password correspond to email user we used.It looks like following screenshot. After that click on apply, and apply. Once its done, all new users' passwords are encrypted and stored in the sql database.
@@ -548,6 +550,3 @@ Now copy the code from the console and paste it to the sql database table under 
 <p align="center">
 	<img width="600px" src="screenshot/mysqlpassword.png" align="center"/>
 </p>
-
-
-
