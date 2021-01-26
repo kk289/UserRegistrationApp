@@ -35,7 +35,6 @@ Since we chose the following dependencies, the [pom.xml](https://github.com/kk28
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>UserApp</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>UserApp</name>
 	<description>User Registration </description>
 
