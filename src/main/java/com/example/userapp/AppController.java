@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -43,5 +45,22 @@ public class AppController {
 		
 		return "users";
 	}
-}
 	
+	@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+	    User user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	    userRepo.delete(user);
+	    return "users";
+	}
+	
+	@PostMapping("/update/{id}")
+	public String updateUser(@PathVariable("id") long id, User user, BindingResult result, Model model) {
+	    if (result.hasErrors()) {
+	        user.setId(id);
+	        return "update-user";
+	    }
+	        
+	    userRepo.save(user);
+	    return "index";
+	}
+}
