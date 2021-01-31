@@ -577,3 +577,19 @@ Lets run the spring boot program, and open the url, http://localhost:8080, in an
 <p align="center">
 	<img width="600px" src="screenshot/userdatabase.png" align="center"/>
 </p>
+
+
+### User Update Feature
+
+Here, we added new edit and delete features where we can edit user information and delete registred user. 
+
+#### src/main/java/com/example/userapp/AppController.java
+```
+// Delete 
+@GetMapping("/delete/{id}")
+	public String deleteUser(@PathVariable("id") long id, Model model) {
+	    User user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	    userRepo.delete(user);
+	    return "users";
+	}
+```
