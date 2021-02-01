@@ -50,7 +50,8 @@ public class AppController {
 	public String deleteUser(@PathVariable("id") long id, Model model) {
 	    User user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	    userRepo.delete(user);
-	    return "users";
+	    
+	    return "redirect:/users";
 	}
 	
 	@PostMapping("/update/{id}")
