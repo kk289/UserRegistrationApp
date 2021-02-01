@@ -593,3 +593,7 @@ Here, we added new edit and delete features where we can edit user information a
 	    return "users";
 	}
 ```
+
+<p align="center">
+	<img width="600px" src="screenshot/update.png" align="center"/>
+</p>
