@@ -601,3 +601,10 @@ Here, we added new edit and delete features where we can edit user information a
 <p align="center">
 	<img width="600px" src="screenshot/update.png" align="center"/>
 </p>
+
+
+### How to create .Jar file
+
+<p align="center">
+	<img alt data-img-marker="true" src="https://media.giphy.com/media/DMdj8JUqdE1kvt5lm4/giphy.gif" align="center">
+</p>
