@@ -2,6 +2,9 @@
 
 This Java Web Application program is written in Spring IDE (STS 4). This program is able to register the user information using their first name, last name, email ID, and user ID information. After signing up, users can return to page by using their credential informations such as User Email and Password. By the way, user's passwords are encrypted and restored in MySQL database.
 
+
+<img alt data-img-marker="true" src="https://media.giphy.com/media/i0Hw2v14FDD0ugWzqr/giphy.gif">
+
 Lets start with a new Spring Starter Project using Maven Type and Java Language. We used java version 11 in this program. The Spring boot version is 2.4.2. For this project, we used following dependencies: 
 
 1. MySQL Driver - To store user database.
