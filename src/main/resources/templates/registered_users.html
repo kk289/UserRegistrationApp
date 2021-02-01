@@ -34,8 +34,9 @@
 		</ul>
   	</nav>
 	<div class="container text-center my-3">
-		<h3>You Successfully Signed Up !</h3>
-		
+		  <div th:if="${user != null}">
+            <h3>You Successfully Signed Up, <span th:utext="${user.firstName}"></span></h3>         
+      	</div>
 		<h4><a th:href="@{/login}">Click here to Login</a></h4>
 	</div>
 </body>
