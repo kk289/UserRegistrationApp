@@ -603,7 +603,9 @@ Here, we added new edit and delete features where we can edit user information a
 </p>
 
 
-### How to create .Jar file
+### How to create .jar file
+
+#### UserApp/target/UserApp-2.4.2.jar
 
 <p align="center">
 	<img alt data-img-marker="true" src="https://media.giphy.com/media/DMdj8JUqdE1kvt5lm4/giphy.gif" align="center">
