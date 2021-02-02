@@ -1,14 +1,21 @@
 package com.example.userapp;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class AppController {
@@ -46,22 +53,24 @@ public class AppController {
 		return "users";
 	}
 	
-	@GetMapping("/delete/{id}")
+	// Update user
+	@PutMapping("/users/{id}")
+	public ResponseEntity<Object> updateUser(@PathVariable(value = "id") Long userId, @RequestBody User userDetails) throws ResourceNotFoundException {
+
+	    User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user id :" + userId));
+	    user.setFirstName(userDetails.getFirstName());
+	    user.setLastName(userDetails.getLastName());
+	    user.setEmail(userDetails.getEmail());
+	    final User updatedUser = userRepo.save(user);
+	    return ResponseEntity.ok(updatedUser);
+	  }
+	
+	// Delete 
+	@GetMapping("/users/{id}")
 	public String deleteUser(@PathVariable("id") long id, Model model) {
 	    User user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	    userRepo.delete(user);
-	    
 	    return "redirect:/users";
 	}
-	
-	@PostMapping("/update/{id}")
-	public String updateUser(@PathVariable("id") long id, User user, BindingResult result, Model model) {
-	    if (result.hasErrors()) {
-	        user.setId(id);
-	        return "update-user";
-	    }
-	        
-	    userRepo.save(user);
-	    return "index";
-	}
 }
+
