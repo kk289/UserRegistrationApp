@@ -590,11 +590,11 @@ Here, we added new edit and delete features where we can edit user information a
 #### src/main/java/com/example/userapp/AppController.java
 ```
 // Delete 
-@GetMapping("/delete/{id}")
+	@GetMapping("/users/{id}")
 	public String deleteUser(@PathVariable("id") long id, Model model) {
 	    User user = userRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	    userRepo.delete(user);
-	    return "users";
+	    return "redirect:/users";
 	}
 ```
 
