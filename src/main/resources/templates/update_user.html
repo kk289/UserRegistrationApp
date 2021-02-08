@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Sign Up</title>
+	<title>Update User</title>
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <!-- // HEADER SECTION -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
   		<ul class="nav mx-auto">
@@ -33,18 +34,23 @@
   			</li>
 		</ul>
   	</nav>
-
-<!-- // MAIN PART : SIGN UP PART -->
+  	
+  
+<!-- // MAIN PART : UPDATE PART -->
 	<div class="container text-center">
-		<form th:action="@{/process_register}" th:object="${user}" 
+		<form th:action="@{/edit/{id}}" th:object="${user}" 
 			method="post" style="max-width: 600px; margin: 0 auto;">
 		<div class="m-3">
-		
+
+			<div class="form-group row">
+					<label class="col-12 col-form-lable">
+					<input type="text" th:field="*{id}" class="form-control" placeholder="User ID"/></label>
+			</div>
+					
 			<div class="form-group row">
 					<label class="col-6 col-form-label">
 					<input type="text" th:field="*{firstName}" class="form-control" 
-							required minlength="2" maxlength="20" placeholder="First Name"/>
-							</label>
+							required minlength="2" maxlength="20" placeholder="First Name"/></label>
 					<label class="col-6 col-form-label">
 					<input type="text" th:field="*{lastName}" class="form-control" 
 							required minlength="2" maxlength="20" placeholder="Last Name"/></label>				
@@ -72,9 +78,7 @@
 			
 			<div class="form-group row" >
 				<label class="col-5 col-form-label">
-				<button type="submit" class="btn btn-primary">Sign Up</button> 
-				</label>
-				<label class="col+5 col-form-label"><a th:href="@{/login}">Already Registered?</a></label>
+				<button type="submit" class="btn btn-primary">Update</button></label>
 			</div>
 		</div>
 		</form>

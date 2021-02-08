@@ -1,16 +1,13 @@
 package com.example.userapp;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +19,7 @@ public class AppController {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
+		
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
@@ -36,12 +33,17 @@ public class AppController {
 	}
 	
 	@PostMapping("/process_register")
-	public String processRegister(User user) {
+	public String processRegister(User user, BindingResult bindingResult) {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		userRepo.save(user);
 		
+		BCryptPasswordEncoder confirmpasswordEncoder = new BCryptPasswordEncoder();
+		String encodedconfirmPassword = confirmpasswordEncoder.encode(user.getConfirmPassword());
+		user.setConfirmPassword(encodedconfirmPassword);
+		userRepo.save(user);
+				
 		return "registered_users";
 	}
 	
@@ -54,7 +56,7 @@ public class AppController {
 	}
 	
 	// Update user
-	@PutMapping("/users/{id}")
+	@PutMapping("/edit/{id}")
 	public ResponseEntity<Object> updateUser(@PathVariable(value = "id") Long userId, @RequestBody User userDetails) throws ResourceNotFoundException {
 
 	    User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user id :" + userId));

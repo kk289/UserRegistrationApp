@@ -25,6 +25,10 @@ private User user;
 		return user.getPassword();
 	}
 
+	public String getConfirmPassword() {
+		return user.getConfirmPassword();
+	}
+
 	@Override
 	public String getUsername() {
 		return user.getEmail();
