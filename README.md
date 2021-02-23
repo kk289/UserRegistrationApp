@@ -628,7 +628,7 @@ Here, we added new edit and delete features where we can edit user information a
 	<img width="600px" src="screenshot/update.png" align="center"/>
 </p>
 
-### How to create .jar file
+### How To Create .jar File
 
 #### UserApp/target/UserApp-2.4.2.jar
 
