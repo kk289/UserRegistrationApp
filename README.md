@@ -632,6 +632,10 @@ Here, we added new edit and delete features where we can edit user information a
 
 #### UserApp/target/UserApp-2.4.2.jar
 
+<p align="center">
+	<img alt data-img-marker="true" src="https://media.giphy.com/media/DMdj8JUqdE1kvt5lm4/giphy.gif" align="center">
+</p>
+
 - Run the UserApp as Maven Build
 - Write "Clean Package" in Goals so that it automatically replaces same old .jar file with new one. 
 - After that, program starts running, and once all tests passed
@@ -648,8 +652,4 @@ Here, we added new edit and delete features where we can edit user information a
 
 - Open Browser, go to http://localhost:8080
 - Test your application
-
-<p align="center">
-	<img alt data-img-marker="true" src="https://media.giphy.com/media/DMdj8JUqdE1kvt5lm4/giphy.gif" align="center">
-</p>
 
