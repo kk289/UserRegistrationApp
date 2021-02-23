@@ -598,10 +598,36 @@ Here, we added new edit and delete features where we can edit user information a
 	}
 ```
 
+```
+// Update user
+	@SuppressWarnings("unlikely-arg-type")
+	@GetMapping("/edit/{id}")
+	public String updateUser(@PathVariable("id") Long userId, Model model) throws ResourceNotFoundException {
+	    User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user id :" + userId));
+	    model.addAttribute(user);
+	    userRepo.equals(user);
+	    return "update_user";
+	    
+	  }
+	
+	@PostMapping("/edit/{id}")
+	public String update_User(User user, BindingResult bindingResult) throws ResourceNotFoundException {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		user.setPassword(encodedPassword);
+		userRepo.save(user);
+		
+		BCryptPasswordEncoder confirmpasswordEncoder = new BCryptPasswordEncoder();
+		String encodedconfirmPassword = confirmpasswordEncoder.encode(user.getConfirmPassword());
+		user.setConfirmPassword(encodedconfirmPassword);
+		userRepo.save(user);
+		
+		return "redirect:/users";
+	}
+```
 <p align="center">
 	<img width="600px" src="screenshot/update.png" align="center"/>
 </p>
-
 
 ### How to create .jar file
 
