@@ -606,9 +606,7 @@ Here, we added new edit and delete features where we can edit user information a
 	    User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user id :" + userId));
 	    model.addAttribute(user);
 	    userRepo.equals(user);
-	    
 	    return "update_user";
-	    
 	  }
 	
 	@PostMapping("/edit/{id}")
@@ -634,6 +632,24 @@ Here, we added new edit and delete features where we can edit user information a
 
 #### UserApp/target/UserApp-2.4.2.jar
 
+- Run the UserApp as Maven Build
+- Write "Clean Package" in Goals so that it automatically replaces same old .jar file with new one. 
+- After that, program starts running, and once all tests passed
+- Open Terminal
+- .jar files are located in folder called "target" in your project directory
+- once you are in "target folder", enter following command: 
+	java -jar UserApp-2.4.2.jar
+
+- Your .jar name might be different so check correctly.
+
+<p align="center">
+	<img width="600px" src="screenshot/jarfile.png" align="center"/>
+</p>
+
+- Open Browser, go to http://localhost:8080
+- Test your application
+
 <p align="center">
 	<img alt data-img-marker="true" src="https://media.giphy.com/media/DMdj8JUqdE1kvt5lm4/giphy.gif" align="center">
 </p>
+
