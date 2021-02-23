@@ -74,9 +74,7 @@ public class AppController {
 	    model.addAttribute(user);
 	    userRepo.equals(user);
 	    return "update_user";
-	    
 	  }
-	
 	
 	@PostMapping("/edit/{id}")
 	public String update_User(User user, BindingResult bindingResult) throws ResourceNotFoundException {
@@ -90,8 +88,9 @@ public class AppController {
 		user.setConfirmPassword(encodedconfirmPassword);
 		userRepo.save(user);
 		
-		return "redirect:/users";
+		return "updateSuccess";
 	}
+	
 	
 	// Delete 
 	@GetMapping("/users/{id}")

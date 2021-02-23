@@ -606,6 +606,7 @@ Here, we added new edit and delete features where we can edit user information a
 	    User user = userRepo.findById(userId).orElseThrow(() -> new IllegalArgumentException("Invalid user id :" + userId));
 	    model.addAttribute(user);
 	    userRepo.equals(user);
+	    
 	    return "update_user";
 	    
 	  }
@@ -621,8 +622,8 @@ Here, we added new edit and delete features where we can edit user information a
 		String encodedconfirmPassword = confirmpasswordEncoder.encode(user.getConfirmPassword());
 		user.setConfirmPassword(encodedconfirmPassword);
 		userRepo.save(user);
-		
-		return "redirect:/users";
+
+		return "updateSuccess";
 	}
 ```
 <p align="center">
